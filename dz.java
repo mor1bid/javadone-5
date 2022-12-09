@@ -14,6 +14,72 @@ public class dz {
         System.out.println("1. Здравствуйте. Введите желаемые фамилию, инициалы без точек и если необходимо цифру от 2 до кол-ва рабочих номеров нужной персоны:");
         String key = work.nextLine();
         System.out.println(phonebook.get(key));
+
+        ArrayList<String> prols = new ArrayList<>();
+        LinkedList<String> names = new LinkedList<>();
+        // LinkedList<String> system = new LinkedList<>();
+        LinkedList<Integer> recs = new LinkedList<>();
+        prols.add("Иван Иванцов");
+        prols.add("Светлана Петровна");
+        prols.add("Кристина Белова");
+        prols.add("Анна Мусина");
+        prols.add("Анна Крутова");
+        prols.add("Иван Юрин");
+        prols.add("Пётр Лыков");
+        prols.add("Павел Чернов");
+        prols.add("Пётр Чернышов");
+        prols.add("Мария Фёдоровна");
+        prols.add("Марина Светлова");
+        prols.add("Мария Савина");
+        prols.add("Мария Рыкова");
+        prols.add("Марина Лугова");
+        prols.add("Анна Владимировна");
+        prols.add("Иван Мечников");
+        int co = 0;
+        String temp = "";
+        String temp2 = "";
+        for (String s : prols) {
+            String name = "";
+            for (int i = 0; i < s.length(); i++) {
+                String lett = Character.toString(s.charAt(i));
+                if (lett.equals(" ")) {
+                    names.add(name);
+                    i = s.length();
+                }
+                else { name += lett; }
+            }
+            
+        }
+        System.out.println(Arrays.asList(names));
+        for (String o : names) {
+            for (String p : names) {
+                if (o.equals(p)) co++;
+            }
+            if (o!=temp) {
+                System.out.println(o + " - " + co + " раз"); 
+                if (co>1) temp = o;
+            }
+            recs.add(co);
+            co = 0;
+    }
+        System.out.println(Arrays.asList(recs));
+        for (int i = 0; i<recs.size(); i++) {
+            int numi = recs.get(i);
+            String nami = names.get(i);
+            for (int j = 0; j<recs.size(); j++) {
+                int numj = recs.get(j);
+                String namj = names.get(j);
+                if (numi<numj) {
+                    recs.set(j, numi);
+                     names.set(j, nami);
+                    recs.set(i, numj);
+                     names.set(i, namj);
+                    j = recs.size();
+                }
+            }
+        }
+        System.out.println(Arrays.asList(recs));
+        System.out.println(Arrays.asList(names));
         work.close();
     }
 }
