@@ -16,8 +16,7 @@ public class dz {
         System.out.println(phonebook.get(key));
 
         ArrayList<String> prols = new ArrayList<>();
-        LinkedList<String> names = new LinkedList<>();
-        // LinkedList<String> system = new LinkedList<>();
+        ArrayList<String> names = new ArrayList<>();
         LinkedList<Integer> recs = new LinkedList<>();
         prols.add("Иван Иванцов");
         prols.add("Светлана Петровна");
@@ -51,30 +50,45 @@ public class dz {
             
         }
         System.out.println(Arrays.asList(names));
-        for (String o : names) {
-            for (String p : names) {
-                if (o.equals(p)) co++;
-            }
-            if (o!=temp) {
-                System.out.println(o + " - " + co + " раз"); 
-                if (co>1) temp = o;
-            }
+        for (String o : names) 
+        {
+            for (String p : names) { if (o.equals(p)) co++; }
+            // if (o!=temp) 
+            // {
+            //     System.out.println(o + " - " + co + " раз"); 
+            //     if (co>1) { temp = o; }
+            // }
+
             recs.add(co);
+        // Сортировка
+            for (int i = 0; i<recs.size(); i++) {
+                int numi = recs.get(i);
+                String nami = names.get(i);
+                for (int j = 0; j<recs.size(); j++) 
+                {
+                    int numj = recs.get(j);
+                    String namj = names.get(j);
+                    if (numi>numj) 
+                    {
+                        recs.set(j, numi);
+                        names.set(j, nami);
+                        recs.set(i, numj);
+                        names.set(i, namj);
+                        j = recs.size(); 
+                    }
+                }
+            }
             co = 0;
-    }
-        System.out.println(Arrays.asList(recs));
-        for (int i = 0; i<recs.size(); i++) {
-            int numi = recs.get(i);
-            String nami = names.get(i);
-            for (int j = 0; j<recs.size(); j++) {
-                int numj = recs.get(j);
-                String namj = names.get(j);
-                if (numi<numj) {
-                    recs.set(j, numi);
-                     names.set(j, nami);
-                    recs.set(i, numj);
-                     names.set(i, namj);
-                    j = recs.size();
+        }
+        System.out.println(Arrays.asList(names));
+        for (int r = 0; r < names.size(); r++) {
+            int call = 0;
+            String rword = names.get(r);
+            for (int d = 0; d < names.size(); d++) {
+                String dword = names.get(d);
+                if (rword.equals(dword)) { 
+                    call++; 
+                    if (call > 1) { names.remove(d); }
                 }
             }
         }
