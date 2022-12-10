@@ -35,8 +35,6 @@ public class dz {
         prols.add("Анна Владимировна");
         prols.add("Иван Мечников");
         int co = 0;
-        String temp = "";
-        String temp2 = "";
         for (String s : prols) {
             String name = "";
             for (int i = 0; i < s.length(); i++) {
@@ -53,13 +51,8 @@ public class dz {
         for (String o : names) 
         {
             for (String p : names) { if (o.equals(p)) co++; }
-            // if (o!=temp) 
-            // {
-            //     System.out.println(o + " - " + co + " раз"); 
-            //     if (co>1) { temp = o; }
-            // }
-
             recs.add(co);
+            co = 0;
         // Сортировка
             for (int i = 0; i<recs.size(); i++) {
                 int numi = recs.get(i);
@@ -78,22 +71,30 @@ public class dz {
                     }
                 }
             }
-            co = 0;
         }
         System.out.println(Arrays.asList(names));
         for (int r = 0; r < names.size(); r++) {
             int call = 0;
+            int mode = 0;
             String rword = names.get(r);
+            int rnum = recs.get(r);
             for (int d = 0; d < names.size(); d++) {
                 String dword = names.get(d);
+                int dnum = recs.get(d);
                 if (rword.equals(dword)) { 
                     call++; 
                     if (call > 1) { names.remove(d); }
+                if (rnum == dnum) { 
+                    mode++; 
+                    if (mode > 1) { recs.remove(d); }
                 }
             }
         }
+        System.out.println(rword + " - " + rnum + " раз");
+    }
         System.out.println(Arrays.asList(recs));
         System.out.println(Arrays.asList(names));
         work.close();
-    }
+
+}
 }
