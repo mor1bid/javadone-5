@@ -93,49 +93,52 @@ public class dz {
         // System.out.println(rword + " - " + rnum + " раз(а)");
     // }
     System.out.println("3. ");
-    LinkedList<Integer> ray = new LinkedList<>();
-    ray.add(4);
-    ray.add(10);
-    ray.add(3);
-    ray.add(5);
-    ray.add(1);
+    int[] ray = {4, 10, 3, 5, 1};
+    // ray.add(4);
+    // ray.add(10);
+    // ray.add(3);
+    // ray.add(5);
+    // ray.add(1);
     // heapso.add(31);
     // heapso.add(53);
     // int si = ray.size();
     heap2(ray);
-    System.out.println(ray);
+    System.out.println(Arrays.toString(ray));
     work.close();
 }
-    public static void heap1(LinkedList<Integer> heapso, int si, int i) {
-        int pa = heapso.get(i);
+    public static void heap1(int[] heapso, int si, int i) {
+        int pa = i;
         int left = 2 * i + 1;
         int right = 2 * i + 2;
-        int cha = heapso.get(left);
-        int chb = heapso.get(right);
-        if (left < si && pa < cha) 
+        // int cha = heapso[left];
+        // int chb = heapso[right];
+        if (left < si && heapso[pa] < heapso[left])
             { 
-                // heapso.set(i, cha); 
-                pa = cha; 
+                pa = left; 
             }
-        if (right < si && pa < chb) 
+        if (right < si && heapso[pa] < heapso[right]) 
             { 
-                // heapso.set(i, chb); 
-                pa = chb; 
+                pa = right; 
             }
         if (pa != i) {
-            int temp = heapso.get(i);
-            heapso.set(i, pa);
-            pa = temp;
+            int temp = heapso[i];
+            heapso[i] = heapso[pa];
+            heapso[pa] = temp;
             heap1(heapso, si, pa);
         }
     }
-    public static void heap2(LinkedList<Integer> heapso) {
-        if (heapso.size() == 0) { return; }
-        int si = heapso.size();
-        for (int i = si / 2 - 1; i >= 0; i--) { heap1(heapso, si, i); }
+    public static void heap2(int[] heapso) {
+        if (heapso.length == 0) { 
+            return; 
+        }
+        int si = heapso.length;
+        for (int i = si / 2 - 1; i >= 0; i--) { 
+            heap1(heapso, si, i); 
+        }
         for (int i = si - 1; i >= 0; i--) {
-            int temp = heapso.get(0);
-            heapso.set(i, temp);
+            int temp = heapso[0];
+            heapso[0] = heapso[i];
+            heapso[i] = temp;
             heap1(heapso, i, 0);
         }
     }
