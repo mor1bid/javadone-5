@@ -7,13 +7,13 @@ public class dz {
     public static void main(String[] args) {
         Scanner work = new Scanner(System.in);
         Map<String, String> phonebook = new HashMap<>();
-        phonebook.put("СорокинИС", "+79788000008, сисадмин");
-        phonebook.put("ТетеревНА", "+79788000007, электрик");
-        phonebook.put("РыжоваАА2", "+79788000006(домашний), куратор");
-        phonebook.put("РыжоваАА", "+79788000016(рабочий), куратор");
+        phonebook.put("SorokinIS", "+79788000008, сисадмин");
+        phonebook.put("TeterevNA", "+79788000007, электрик");
+        phonebook.put("RizhovaAA2", "+79788000006(домашний), куратор");
+        phonebook.put("RizhovaAA", "+79788000016(рабочий), куратор");
         System.out.println("1. Здравствуйте. Введите желаемые фамилию, инициалы без точек и если необходимо цифру от 2 до кол-ва рабочих номеров нужной персоны:");
         String key = work.nextLine();
-        System.out.println(phonebook.get(key));
+        System.out.println(phonebook.get(key) + "\n2.");
 
         ArrayList<String> prols = new ArrayList<>();
         ArrayList<String> names = new ArrayList<>();
@@ -35,7 +35,8 @@ public class dz {
         prols.add("Анна Владимировна");
         prols.add("Иван Мечников");
         int co = 0;
-        for (String s : prols) {
+        for (String s : prols) 
+        {
             String name = "";
             for (int i = 0; i < s.length(); i++) {
                 String lett = Character.toString(s.charAt(i));
@@ -45,9 +46,7 @@ public class dz {
                 }
                 else { name += lett; }
             }
-            
         }
-        System.out.println(Arrays.asList(names));
         for (String o : names) 
         {
             for (String p : names) { if (o.equals(p)) co++; }
@@ -72,7 +71,6 @@ public class dz {
                 }
             }
         }
-        System.out.println(Arrays.asList(names));
         for (int r = 0; r < names.size(); r++) {
             int call = 0;
             int mode = 0;
@@ -90,11 +88,10 @@ public class dz {
                 }
             }
         }
-        System.out.println(rword + " - " + rnum + " раз");
+        System.out.println(rword + " - " + rnum + " раз(а)");
     }
-        System.out.println(Arrays.asList(recs));
-        System.out.println(Arrays.asList(names));
-        work.close();
-
+    System.out.println("3. ");
+    
+    work.close();
 }
 }
